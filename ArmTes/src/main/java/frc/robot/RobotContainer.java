@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.RunMotor;
+import frc.robot.commands.RunMotorFast;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.RUn;
@@ -23,7 +24,6 @@ import frc.robot.subsystems.RUn;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RUn Spin = new RUn();
-
   private final ExampleSubsystem m_subsystem = new ExampleSubsystem();
   private final static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
   private final SequentialCommandGroup autonCommands = new SequentialCommandGroup(new ExampleCommand(m_subsystem));
@@ -44,7 +44,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     JoystickButton aButton = new JoystickButton(driverController, XboxController.Button.kA.value);
-    aButton.toggleWhenPressed(new RunMotor(Spin));
+    JoystickButton bButton = new JoystickButton(driverController, XboxController.Button.kB.value);
+    aButton.whenPressed(new RunMotor(Spin));
+    aButton.and(bButton.whenHeld(new RunMotorFast(Spin)));
   }
 
   /**

@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.RUn;
 
-public class RunMotor extends CommandBase {
+public class RunMotorFast extends CommandBase {
     public static RUn MotorRun;
-    public RunMotor(RUn run){
+    public RunMotorFast(RUn run){
         MotorRun = run;
     }
 
     @Override
     public void execute() {
-        MotorRun.getMotor().set(.5);
+        MotorRun.getMotor().set(.7);
     }
 
     public void end(boolean interrupted) {
