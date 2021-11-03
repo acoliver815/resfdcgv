@@ -44,8 +44,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     JoystickButton aButton = new JoystickButton(driverController, XboxController.Button.kA.value);
-    aButton.whenHeld(new RunMotor(Spin));
-    aButton.whenInactive(new StopMotor(Spin));
+    aButton.toggleWhenPressed(new RunMotor(Spin));
   }
 
   /**

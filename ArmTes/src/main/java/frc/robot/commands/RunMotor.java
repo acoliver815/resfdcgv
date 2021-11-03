@@ -16,8 +16,8 @@ public class RunMotor extends CommandBase {
         MotorRun.getMotor().set(.5);
     }
 
-    public void end() {
-        MotorRun.getMotor().set(0);
+    public void end(boolean interrupted) {
+        MotorRun.getMotor().set(0.0);
     }
 
 }
