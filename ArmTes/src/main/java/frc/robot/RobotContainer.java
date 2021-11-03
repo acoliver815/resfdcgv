@@ -23,6 +23,7 @@ import frc.robot.subsystems.RUn;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RUn Spin = new RUn();
+
   private final ExampleSubsystem m_subsystem = new ExampleSubsystem();
   private final static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
   private final SequentialCommandGroup autonCommands = new SequentialCommandGroup(new ExampleCommand(m_subsystem));
@@ -44,6 +45,7 @@ public class RobotContainer {
 
     JoystickButton aButton = new JoystickButton(driverController, XboxController.Button.kA.value);
     aButton.whenHeld(new RunMotor(Spin));
+    aButton.whenInactive(new StopMotor(Spin));
   }
 
   /**
